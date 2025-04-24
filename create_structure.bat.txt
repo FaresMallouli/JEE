@@ -1,0 +1,93 @@
+@echo off
+echo Creating Microservice Module Structure...
+
+rem --- Ensure running from devoirrr folder ---
+if not exist "pom.xml" (
+    echo ERROR: Please run this script from inside the 'devoirrr' project folder containing the PARENT pom.xml.
+    goto :eof
+)
+
+rem --- Reminder about Parent POM ---
+echo IMPORTANT: Make sure the pom.xml in this current directory has been replaced with the PARENT POM content.
+
+rem --- Reminder to delete old src ---
+echo IMPORTANT: Remember to DELETE the original 'src' folder from this root directory later!
+
+rem --- Create Discovery Service ---
+echo Creating discovery-service...
+md "discovery-service\src\main\java\com\idsd\discovery" > nul
+md "discovery-service\src\main\resources" > nul
+md "discovery-service\src\test\java\com\idsd\discovery" > nul
+type nul > "discovery-service\pom.xml"
+type nul > "discovery-service\src\main\java\com\idsd\discovery\DiscoveryServiceApplication.java"
+type nul > "discovery-service\src\main\resources\application.properties"
+
+rem --- Create Gateway Service ---
+echo Creating gateway-service...
+md "gateway-service\src\main\java\com\idsd\gateway" > nul
+md "gateway-service\src\main\resources" > nul
+md "gateway-service\src\test\java\com\idsd\gateway" > nul
+type nul > "gateway-service\pom.xml"
+type nul > "gateway-service\src\main\java\com\idsd\gateway\GatewayServiceApplication.java"
+type nul > "gateway-service\src\main\resources\application.properties"
+
+rem --- Create Keynote Service ---
+echo Creating keynote-service...
+md "keynote-service\src\main\java\com\idsd\keynote\controller" > nul
+md "keynote-service\src\main\java\com\idsd\keynote\dto" > nul
+md "keynote-service\src\main\java\com\idsd\keynote\entity" > nul
+md "keynote-service\src\main\java\com\idsd\keynote\mapper" > nul
+md "keynote-service\src\main\java\com\idsd\keynote\repository" > nul
+md "keynote-service\src\main\java\com\idsd\keynote\service" > nul
+md "keynote-service\src\main\resources" > nul
+md "keynote-service\src\test\java\com\idsd\keynote" > nul
+type nul > "keynote-service\pom.xml"
+type nul > "keynote-service\src\main\java\com\idsd\keynote\KeynoteServiceApplication.java"
+type nul > "keynote-service\src\main\java\com\idsd\keynote\controller\KeynoteController.java"
+type nul > "keynote-service\src\main\java\com\idsd\keynote\dto\KeynoteDTO.java"
+type nul > "keynote-service\src\main\java\com\idsd\keynote\entity\Keynote.java"
+type nul > "keynote-service\src\main\java\com\idsd\keynote\mapper\KeynoteMapper.java"
+type nul > "keynote-service\src\main\java\com\idsd\keynote\repository\KeynoteRepository.java"
+type nul > "keynote-service\src\main\java\com\idsd\keynote\service\KeynoteService.java"
+type nul > "keynote-service\src\main\resources\application.properties"
+
+rem --- Create Conference Service ---
+echo Creating conference-service...
+md "conference-service\src\main\java\com\idsd\conference\client" > nul
+md "conference-service\src\main\java\com\idsd\conference\controller" > nul
+md "conference-service\src\main\java\com\idsd\conference\dto" > nul
+md "conference-service\src\main\java\com\idsd\conference\entity" > nul
+md "conference-service\src\main\java\com\idsd\conference\mapper" > nul
+md "conference-service\src\main\java\com\idsd\conference\repository" > nul
+md "conference-service\src\main\java\com\idsd\conference\service" > nul
+md "conference-service\src\main\resources" > nul
+md "conference-service\src\test\java\com\idsd\conference" > nul
+type nul > "conference-service\pom.xml"
+type nul > "conference-service\src\main\java\com\idsd\conference\ConferenceServiceApplication.java"
+type nul > "conference-service\src\main\java\com\idsd\conference\client\KeynoteServiceClient.java"
+type nul > "conference-service\src\main\java\com\idsd\conference\controller\ConferenceController.java"
+type nul > "conference-service\src\main\java\com\idsd\conference\dto\ConferenceDTO.java"
+type nul > "conference-service\src\main\java\com\idsd\conference\dto\CreateConferenceDTO.java"
+type nul > "conference-service\src\main\java\com\idsd\conference\dto\ReviewDTO.java"
+type nul > "conference-service\src\main\java\com\idsd\conference\dto\CreateReviewDTO.java"
+type nul > "conference-service\src\main\java\com\idsd\conference\entity\Conference.java"
+type nul > "conference-service\src\main\java\com\idsd\conference\entity\ConferenceType.java"
+type nul > "conference-service\src\main\java\com\idsd\conference\entity\Review.java"
+type nul > "conference-service\src\main\java\com\idsd\conference\mapper\ConferenceMapper.java"
+type nul > "conference-service\src\main\java\com\idsd\conference\mapper\ReviewMapper.java"
+type nul > "conference-service\src\main\java\com\idsd\conference\repository\ConferenceRepository.java"
+type nul > "conference-service\src\main\java\com\idsd\conference\repository\ReviewRepository.java"
+type nul > "conference-service\src\main\java\com\idsd\conference\service\ConferenceService.java"
+type nul > "conference-service\src\main\resources\application.properties"
+
+
+echo.
+echo Structure created successfully!
+echo NEXT STEPS:
+echo 1. Manually REPLACE the content of devoirrr/pom.xml with the PARENT POM content.
+echo 2. Manually copy/paste the correct code content into all the generated empty .java and .properties files.
+echo 3. Manually copy/paste the correct XML content into the generated empty module pom.xml files.
+echo 4. Manually DELETE the original 'devoirrr/src' folder.
+echo 5. Refresh your IDE project view.
+
+:eof
