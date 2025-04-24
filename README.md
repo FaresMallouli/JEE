@@ -29,6 +29,56 @@ L'architecture complète envisagée pour ce projet est la suivante :
 
 7.  **Documentation API (ex: OpenAPI/Swagger)** :
     *   Rôle : Génère automatiquement la documentation des API REST exposées par les microservices.
+  
+flowchart TD
+    classDef clientStyle fill:#E0F2F1,stroke:#004D40,stroke-width:2px,color:#004D40,font-weight:bold
+    classDef gatewayStyle fill:#BBDEFB,stroke:#0D47A1,stroke-width:2px,color:#0D47A1,font-weight:bold
+    classDef infraStyle fill:#E1BEE7,stroke:#4A148C,stroke-width:2px,color:#4A148C,font-weight:bold
+    classDef serviceStyle fill:#C8E6C9,stroke:#1B5E20,stroke-width:2px,color:#1B5E20,font-weight:bold
+    classDef dbStyle fill:#FFECB3,stroke:#FF6F00,stroke-width:2px,color:#FF6F00,font-weight:bold
+    
+    Client[fa:fa-laptop-code Client<br>Web/Mobile/API] --> GW
+    
+    subgraph Infrastructure["Infrastructure Services"]
+        GW[fa:fa-random API Gateway<br>Spring Cloud Gateway]
+        DS[fa:fa-compass Discovery Service<br>Eureka/Consul]
+        CFG[fa:fa-cogs Config Service<br>Spring Cloud Config]
+    end
+    
+    subgraph Business["Business Services"]
+        KS[fa:fa-chalkboard-teacher Keynote Service<br>API: /keynotes]
+        CS[fa:fa-users Conference Service<br>API: /conferences, /reviews]
+    end
+    
+    subgraph DataLayer["Data Layer"]
+        DB_KS[(fa:fa-database Keynote DB)]
+        DB_CS[(fa:fa-database Conference DB)]
+    end
+    
+    GW --> |Route /keynotes/**| KS
+    GW --> |Route /conferences/**<br>/reviews/**| CS
+    GW --> |Service Discovery| DS
+    
+    KS --> |Register & Heartbeat| DS
+    CS --> |Register & Heartbeat| DS
+    
+    KS --> |Read/Write| DB_KS
+    CS --> |Read/Write| DB_CS
+    
+    CS --> |API Call via Feign| KS
+    
+    KS -..-> |Config Fetch| CFG
+    CS -..-> |Config Fetch| CFG
+    GW -..-> |Config Fetch| CFG
+    
+    Client:::clientStyle
+    GW:::gatewayStyle
+    DS:::infraStyle
+    CFG:::infraStyle
+    KS:::serviceStyle
+    CS:::serviceStyle
+    DB_KS:::dbStyle
+    DB_CS:::dbStyle
 
 
 
