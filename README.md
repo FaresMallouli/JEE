@@ -46,5 +46,5 @@ Dans la version actuelle poussée sur ce dépôt, **seuls les modules fonctionne
     *   Interaction : Configuration d'un client OpenFeign pour appeler `keynote-service` (nécessite que `keynote-service` et Eureka soient en cours d'exécution pour fonctionner).
     *   Configuration : Base de données H2 en mémoire, enregistrement Eureka, documentation Swagger de base.
 
-**Les modules techniques (`discovery-service`, `config-service`, `gateway-service`) ainsi que l'intégration complète des fonctionnalités (tests avancés, configuration fine de la résilience, déploiement...) ne font pas partie de ce commit initial et devront être ajoutés ultérieurement pour réaliser l'architecture cible complète.**
+**Les modules techniques (`discovery-service`, `config-service`, `gateway-service`) ainsi que l'intégration complète des fonctionnalités (tests avancés, configuration fine de la résilience ...) ne font pas partie de ce commit initial et devront être ajoutés ultérieurement pour réaliser l'architecture cible complète.**
 
