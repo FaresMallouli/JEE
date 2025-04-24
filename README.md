@@ -31,7 +31,7 @@ L'architecture complète envisagée pour ce projet est la suivante :
     *   Rôle : Génère automatiquement la documentation des API REST exposées par les microservices.
 <<<<<<< HEAD
 
-![Diagramme Architecture Microservices](architectureJEE.png)
+![Diagramme Architecture Microservices](architectureJEE.jpg)
 =======
   
 >>>>>>> ba6f19f4d0781ea7225edad737adebf5fbd1b017
