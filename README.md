@@ -30,7 +30,7 @@ L'architecture complète envisagée pour ce projet est la suivante :
 7.  **Documentation API (ex: OpenAPI/Swagger)** :
     *   Rôle : Génère automatiquement la documentation des API REST exposées par les microservices.
 
-
+![Diagramme Architecture Microservices](architectureJEE.png)
 
 
 ## État Actuel de l'Implémentation (Ce Commit)
